@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %} Book 상세보기 {% endblock %}
+{% block content %}
+    <h1>{{team.title}}</h1>
+    제목 : {{team.title}} <br>
+    저자 : {{team.author}} <br>
+    출판사 : {{team.publisher}} <br>
+    <a href="{% url 'team:update' team.id %}">[수정하기]</a>
+    <a href="{% url 'team:delete' team.id %}">[삭제하기]</a> 
+{% endblock %}
