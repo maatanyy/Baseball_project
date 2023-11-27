@@ -1,0 +1,8 @@
+{% block title %} Team 목록 {% endblock %}
+{% block content %}
+    <h1>Team 목록 보기</h1>
+    {% for team in team_list %}
+        <a href="{% url 'team:detail' team.id %}"> {{team.name}} {{team.level}}</a><br>
+    {% endfor %}
+    <a href="{% url 'team:create' %}">[새 팀 등록]</a>
+{% endblock %}
