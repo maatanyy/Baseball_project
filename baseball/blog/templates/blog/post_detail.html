@@ -19,9 +19,12 @@
     <hr>
     <p>태그</p>
     {% for tag in tag_list %}
-        {{tag.name}} 
+        # <a href = "/blog/tag/{{tag.id}}/">{{tag.name}} </a>
     {% endfor %}
     <hr>
     <a href="{% url 'blog:list' %}">[목록 보기]</a>
+    <a href="{% url 'blog:update' post.id %}">[글 수정]</a>
+    <a href="{% url 'blog:delete' post.id %}">[글 삭제]</a>
+
 
 {% endblock content %}
