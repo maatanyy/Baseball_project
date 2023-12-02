@@ -3,6 +3,7 @@
     <h1>{{team.name}}</h1>
     팀 이름 : {{team.name}} <br>
     군 : {{team.level}} <br>
+    나라 : {{team.country}}<br>
     <a href="{% url 'team:update' team.id %}">[수정하기]</a>
     <a href="{% url 'team:delete' team.id %}">[삭제하기]</a> 
 {% endblock %}

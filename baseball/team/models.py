@@ -13,6 +13,16 @@ class Team(models.Model):
     
     name = models.CharField(max_length=30)
     level = models.IntegerField()
+    COUNTRY_CHOICES = [
+        ('usa', 'USA'),
+        ('korea', 'Korea'),
+        ('japan', 'Japan'),
+    ]
+    
+    country = models.CharField(
+        max_length=5, choices= COUNTRY_CHOICES,
+        default='korea',
+    )
 
     
 
