@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "team",
     "blog",
     "accounts",
+    "rest_framework",
+    
 ]
 
 MIDDLEWARE = [
