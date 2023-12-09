@@ -21,3 +21,12 @@ def signup(request):
 
         
     return render(request, 'registration/signup.html', {'form':form})
+
+
+class MyPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        # 일회용 메시지 작성
+        messages.info(self.request, '암호 변경을 완료했습니다.')
+        return super().form_valid(form)       
