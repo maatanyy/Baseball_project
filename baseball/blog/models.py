@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse, reverse_lazy
+from accounts.models import MyUser
 
 # Create your models here.
 
@@ -36,17 +37,9 @@ class Tag(models.Model):
         return self.name
     
 
-class User(models.Model):
-    
-    name = models.CharField(max_length=20)
-    
-    def __str__(self):
-        return self.name
-    
-
 class Profile(models.Model):
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE,related_name='profile')
     phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=50)
     

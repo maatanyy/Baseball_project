@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import Profile
+from .models import MyUser
 
 class SignupForm(UserCreationForm):
     phone_number = forms.CharField()
@@ -12,7 +12,7 @@ class SignupForm(UserCreationForm):
     
     def save(self):
         user = super().save()
-        Profile.objects.create(user=user, 
+        MyUser.objects.create(user=user, 
                                phone_number = self.cleaned_data['phone_number'], 
                                address = self.cleaned_data['address'])
         

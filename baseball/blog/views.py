@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest
 from .models import *
 from .forms import *
+from accounts.models import MyUser
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -65,7 +67,7 @@ def detail(request,no):
 
 
 def profile(request):
-    user = User.objects.first()
+    user = request.user
     
     return render(request, 'blog/profile.html', {'user':user})
 
