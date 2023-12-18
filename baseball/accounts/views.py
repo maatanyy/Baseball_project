@@ -10,6 +10,7 @@ import requests
 from django.http import HttpResponse
 from accounts.models import MyUser
 from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
 def signup(request):
@@ -73,18 +74,24 @@ def kakao_callback(request):
         
         profile_json = profile_request.json() 
         user_id = profile_json.get('id')
-        email = profile_json.get("kakao_account").get("email")
+        #email = profile_json.get("kakao_account").get("email")
         properties = profile_json.get("properties")
         nickname = properties.get("nickname")
-        profile_image = properties.get("profile_image")
+        profile_image = properties.get("profile_image", "")
         
+        print('username',nickname)
+ 
         user = MyUser.objects.create(
-            name = nickname,
+            username = nickname,
+            avatar=profile_image,
         )
         
-        user.save()
+    
+        
         login(request, user)
-        return redirect(reverse('profile'))
+        
+        if request.user.is_authenticated:
+            return redirect('profile')
         
     except KakaoException:
         return HttpResponse("Fail")

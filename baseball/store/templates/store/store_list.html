@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %} Store 목록 {% endblock %}
+{% block content %}
+    <h1>Store 목록 보기</h1>
+    {% for store in store_list %}
+        <a href="#"> {{store.name}} {{store.location}} {{store.number}}</a><br>
+    {% endfor %}
+{% endblock %}
+

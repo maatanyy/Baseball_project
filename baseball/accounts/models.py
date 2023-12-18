@@ -6,10 +6,10 @@ from django.contrib.auth.models import  AbstractUser, Group, Permission
 # Create your models here.
 
 class MyUser(AbstractUser):
-    name = models.CharField(max_length=20,default=True)
-    phone_number = models.CharField(max_length=20)
-    address = models.CharField(max_length=50)
-    avatar = models.ImageField(upload_to='avatars', blank=True)
+    username = models.CharField(max_length=20, unique=True)
+    phone_number = models.CharField(max_length=20, null=True)
+    address = models.CharField(max_length=50, null=True)
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
     
     groups = models.ManyToManyField(
         Group,
