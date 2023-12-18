@@ -8,5 +8,5 @@ app_name = 'store'
 urlpatterns = [
     
     path('', ListView.as_view(model=Store), name = 'list'),
-
+    path('test/',views.test, name='test'),
 ]
